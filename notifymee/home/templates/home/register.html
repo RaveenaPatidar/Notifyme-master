@@ -1,0 +1,38 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}Register{% endblock title %}
+{% block image %}
+<style>
+    /* Replace 'path_to_image' with the correct path to your image */
+    body {
+        background-image: url("/static/home/images/plainblack.jpg");
+        /* Other CSS properties for body */
+    }
+</style>
+{% endblock image %}
+{% block main-content %}
+<div class="container">
+    <div class="row justify-content-center align-items-center" style="height: 100vh;">
+        <div class="col-md-6">
+            <h3 class="text-center text-white mb-4">REGISTER NOW </h3>
+            <form action="{% url 'register' %}" method="post">
+
+                {% csrf_token %}
+                <div class="mb-3">
+                    <input type="text" class="form-control" placeholder="Username" name="username">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder="Password" name="password">
+                </div>
+
+                <div class="mb-3">
+                    <input type="password" class="form-control" placeholder="Confirm Password" name="confirm_password">
+                </div>
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-warning btn-block ">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}

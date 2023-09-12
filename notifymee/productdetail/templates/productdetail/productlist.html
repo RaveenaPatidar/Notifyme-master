@@ -1,0 +1,40 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block title %}Addnewproducts{% endblock title %}
+{% block image %}
+<style>
+    /* Replace 'path_to_image' with the correct path to your image */
+    body {
+        background-image: url("/static/home/images/plainblack.jpg");
+        /* Other CSS properties for body */
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+</style>
+{% endblock image %}
+{% block main-content %}
+<div class="container-fluid p-0">
+    <div class="row no-gutters">
+        <div class="col-md-3">
+            <div class="sidebar" style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+                <h3 class="text-white mb-4">Welcome <span class="text-capitalize">{{request.user}}</span></h3>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="container mt-5"> <!-- Increased margin-top here -->
+                <div class="row">
+                    {% for pd in productlist %}
+                    <div class="col-md-4 mb-4">
+                        <div class="product-box p-3 text-white" style="background-color: #333; border-radius: 5px;">
+                            <h3 class="mb-3">Product {{ forloop.counter }}</h3>
+                            <p class="mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Product Name: {{ pd.name }}</p>
+                            <p class="mb-2" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Product URL: {{ pd.url }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock main-content %}
